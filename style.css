@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.toggle-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #59b1d9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    /* Smaller button */
+    height: 50px;
+    /* Smaller button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.dialer-container {
+    position: fixed;
+    bottom: 80px;
+    /* Higher distance */
+    left: 20px;
+    width: 200px;
+    /* Smaller Dialer */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #59b1d9;
+    /* Green Line like WhatsApp */
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 10px; /* Rounded corners */
+}
+
+.output {
+    width: 100%;
+    height: 40px;
+    /* Smaller output box */
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    /* Smaller text */
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.dial-pad {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.digit {
+    width: 50px;
+    /* Smaller buttons */
+    height: 50px;
+    /* Smaller buttons */
+    background-color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Perfect Circle */
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    /* Shadow effect */
+}
+
+.digit:hover {
+    background-color: #d5d5d5;
+}
+
+.sub {
+    font-size: 10px;
+    /* Smaller subtext */
+    color: #666;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+    /* Center horizontally */
+}
+
+.call-button,
+.delete-button {
+    background-color: #59b1d9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    /* Smaller buttons */
+    height: 50px;
+    /* Smaller buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    /* Shadow effect */
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.call-button:active,
+.delete-button:active {
+    transform: scale(0.95);
+}

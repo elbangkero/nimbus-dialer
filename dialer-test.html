@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Dial Pad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button id="toggle-dialer" class="toggle-button">
+        <i class="fa fa-mobile-phone"></i>
+    </button>
+    <div id="dialer" class="dialer-container">
+        <div class="output" id="output"></div>
+        <div class="dial-pad">
+            <div class="row">
+                <div class="digit" data-number="1">1</div>
+                <div class="digit" data-number="2">2<span class="sub">ABC</span></div>
+                <div class="digit" data-number="3">3<span class="sub">DEF</span></div>
+            </div>
+            <div class="row">
+                <div class="digit" data-number="4">4<span class="sub">GHI</span></div>
+                <div class="digit" data-number="5">5<span class="sub">JKL</span></div>
+                <div class="digit" data-number="6">6<span class="sub">MNO</span></div>
+            </div>
+            <div class="row">
+                <div class="digit" data-number="7">7<span class="sub">PQRS</span></div>
+                <div class="digit" data-number="8">8<span class="sub">TUV</span></div>
+                <div class="digit" data-number="9">9<span class="sub">WXYZ</span></div>
+            </div>
+            <div class="row">
+                <div class="digit" data-number="*">*</div>
+                <div class="digit" data-number="0">0<span class="sub">+</span></div>
+                <div class="digit" data-number="#">#</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="call-button" class="call-button">
+                <i class="fa fa-phone"></i>
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
