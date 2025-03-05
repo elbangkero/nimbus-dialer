@@ -4,13 +4,18 @@ $(document).ready(function () {
 
   // Toggle dialer visibility
   $('#toggle-dialer').on('click', function () {
+    $('.softphone_header').css('border-radius', '0 0 0 0');
     $('#dialer').slideToggle(1000, function () {
       if ($('#dialer').is(':visible')) {
         dialer_active = true;
+        $('.softphone_arrow').css('transform', 'rotate(0deg)');
+        $('.softphone_header').css('border-radius', '0 0 0 0');
         console.log('active');
       } else {
         dialer_active = false;
         console.log('inactive');
+        $('.softphone_header').css('border-radius', '10px 10px 0 0');
+        $('.softphone_arrow').css('transform', 'rotate(180deg)');
       }
     });
   });
@@ -21,20 +26,24 @@ $(document).ready(function () {
     if (dialer_active) {
       const button = $(`.digit[data-number="${num}"]`);
 
-      if (button.length && count < 11) {
-        // Mouse click animation
-        button.addClass('active');
-        setTimeout(() => {
-          button.removeClass('active');
-        }, 200);
 
-        let sound = new Audio(`https://www.soundjay.com/phone/sounds/cell-phone-1-nr${num}.mp3`); // Working sound ✅
-        sound.currentTime = 0;
-        sound.play();
+      // Mouse click animation
+      button.addClass('active');
+      setTimeout(() => {
+        button.removeClass('active');
+      }, 200);
+      //console.log(num);
+      const sound_digit = /^[0-9*#]$/.test(num) ? 1 : num;
+      let sound = new Audio(`https://www.soundjay.com/phone/sounds/cell-phone-1-nr${sound_digit}.mp3`); // Working sound ✅
+      sound.currentTime = 0;
+      sound.play();
 
-        $('#output').append('<span>' + num + '</span>');
-        count++;
+      let current = $('#output').val();
+
+      if (!$('#output').is(':focus')) {
+        $('#output').val(current + num);
       }
+
     }
 
   }

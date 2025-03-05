@@ -11,11 +11,14 @@
 </head>
 
 <body>
-    <button id="toggle-dialer" class="toggle-button">
-        <i class="fa fa-mobile-phone"></i>
-    </button>
+    <div id="softphone_header" class="softphone_header">
+        <div id="toggle-dialer" class="toggle-dialer">
+            <i class="softphone_comment"></i><span>Flyfone</span>
+            <i id="softphone_arrow" class="softphone_arrow"></i>
+        </div>
+    </div>
     <div id="dialer" class="dialer-container">
-        <div class="output" id="output"></div>
+        <input type="text" name="" class="output" id="output" placeholder="Username or Phone Number">
         <div class="dial-pad">
             <div class="row">
                 <div class="digit" data-number="1">1</div>

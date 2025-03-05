@@ -11,7 +11,7 @@ body {
     /* Blue */
     color: white;
     border: none;
-    border-radius: 0 0 0 0;
+    border-radius: 0 10px 0 0;
     text-align: center;
     font-size: 20px;
     cursor: pointer;
@@ -24,40 +24,40 @@ body {
     /* Distance from the left */
     max-width: 400px;
     /* Same max width as dialer */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 1px 1px 1px #61a8d8;
     z-index: 999;
     /* Keep button on top */
 }
 
 .dialer-container {
     position: fixed;
-    bottom: 42px;
+    bottom: 23px;
     /* Higher distance */
-    left: 0;
-    width: 200px;
+    left: 10px;
+    width: 180px;
     /* Smaller Dialer */
     background-color: white;
-    border-radius: 0 10px 0 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px 10px 0 0;
     display: none;
     flex-direction: column;
     align-items: center;
     padding: 15px;
     border: 2px solid #59b1d9;
     /* Green Line like WhatsApp */
-    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 1px 1px 1px #61a8d8;
 }
 
 .output {
-    width: 100%;
-    height: 40px;
+    width: 143px;
+    height: 30px;
     /* Smaller output box */
     background-color: #f1f1f1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 13px;
     /* Smaller text */
+    padding: 0 15px 0 15px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
@@ -137,4 +137,54 @@ body {
 .call-button:active,
 .delete-button:active {
     transform: scale(0.95);
+}
+
+.softphone_header {
+    cursor: pointer;
+    position: fixed;
+    left: 10px;
+    width: 220px;
+    z-index: 2147483646;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 25px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: block;
+    background-color: #61a8d8;
+    color: white;
+    bottom: 0px;
+    border-radius: 10px 10px 0 0;
+}
+
+.softphone_comment {
+    background: transparent url(./comments.svg) repeat scroll 17px 17px / 17px 17px;
+    float: left;
+    display: block;
+    height: 17px;
+    width: 17px;
+    position: relative;
+    top: -3px;
+    margin: 4px 10px 0 -10px
+}
+
+.softphone_arrow {
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 4px 15px 0 auto;
+    background: transparent url(./arrow-down.svg) repeat scroll 14px 14px / 14px 14px;
+    display: block;
+    float: right;
+    height: 14px;
+    width: 14px;
+    transform: rotate(180deg);
+    right: -8px;
+    position: absolute;
+    bottom: 6px;
+    top: 1px;
+} 
+
+.toggle-dialer {
+    display: table;
+    padding: 2px 0 0 25px;
+    width: 100%;
+
 }
