@@ -1,7 +1,7 @@
 $(document).ready(function () {
   let count = 0;
   let dialer_active = false;
-
+  let mute_active = false;
   // Toggle dialer visibility
   $('#toggle-dialer').on('click', function () {
     $('.softphone_header').css('border-radius', '0 0 0 0');
@@ -92,4 +92,19 @@ $(document).ready(function () {
       alert('❌ Please enter a number first!');
     }
   });
+
+  // Call button functionality
+  $('#mute-button').on('click', function () {
+    const icon = $(this).find('i');
+    if (icon.hasClass('fa-microphone-slash')) {
+      icon.removeClass('fa-microphone-slash').addClass('fa-microphone');
+      mute_active = false;
+    } else {
+      icon.removeClass('fa-microphone').addClass('fa-microphone-slash');
+      mute_active = true;
+    }
+  
+
+  });
+
 });

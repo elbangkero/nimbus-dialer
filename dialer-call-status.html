@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Dial Pad</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -18,14 +18,31 @@
         </div>
     </div>
     <div id="dialer" class="dialer-container">
-      
-        <div class="controls">
-            <button id="call-button" class="call-button">
-                <i class="fa fa-phone"></i>
-            </button>
+        <div class="call-info">
+            <h3>Call Information</h3>
+            <div class="info-item">
+                <span>Player Name:</span> Robert John Gajelomo
+            </div>
+            <div class="info-item">
+                <span>Player Username:</span> 005018d5e7956f1b
+            </div>
+            <div class="info-item">
+                <span>Call Duration:</span> 2:00
+            </div>
+        </div>
+        <div class="dial-pad">
+            <div class="row">
+                <button id="drop-call-button" class="drop-call-button">
+                    <i class="fa fa-phone-slash"></i>
+                </button>
+                <button id="mute-button" class="mute-button">
+                    <i class="fa fa-microphone"></i>
+                </button>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script> 
+    
+    <script src="script.js"></script>
 </body>
 
 </html>
