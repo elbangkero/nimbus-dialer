@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Dial Pad</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -18,36 +18,272 @@
         </div>
     </div>
     <div id="dialer" class="dialer-container">
-        <input type="text" name="" class="output" id="output" placeholder="Username or Phone Number">
-        <div class="dial-pad">
-            <div class="row">
-                <div class="digit" data-number="1">1</div>
-                <div class="digit" data-number="2">2<span class="sub">ABC</span></div>
-                <div class="digit" data-number="3">3<span class="sub">DEF</span></div>
+        <!-- Tabs Navigation -->
+        <div class="tabs-container">
+            <div class="tab active" data-tab="dialer-tab">
+                <i class="fa fa-th"></i>
+                <span>Dial</span>
             </div>
-            <div class="row">
-                <div class="digit" data-number="4">4<span class="sub">GHI</span></div>
-                <div class="digit" data-number="5">5<span class="sub">JKL</span></div>
-                <div class="digit" data-number="6">6<span class="sub">MNO</span></div>
+            <div class="tab" data-tab="contacts-tab">
+                <i class="fa fa-address-book"></i>
+                <span>Players</span>
             </div>
-            <div class="row">
-                <div class="digit" data-number="7">7<span class="sub">PQRS</span></div>
-                <div class="digit" data-number="8">8<span class="sub">TUV</span></div>
-                <div class="digit" data-number="9">9<span class="sub">WXYZ</span></div>
+            <div class="tab" data-tab="history-tab">
+                <i class="fa fa-clock-o"></i>
+                <span>History</span>
             </div>
-            <div class="row">
-                <div class="digit" data-number="*">*</div>
-                <div class="digit" data-number="0">0<span class="sub">+</span></div>
-                <div class="digit" data-number="#">#</div>
+            <div class="tab-indicator"></div>
+        </div>
+
+        <!-- Dialer Tab Content -->
+        <div id="dialer-tab" class="tab-content active">
+            <input type="text" name="" class="output" id="output" placeholder="Phone Number">
+            <div class="dial-pad">
+                <div class="row">
+                    <div class="digit" data-number="1">1</div>
+                    <div class="digit" data-number="2">2<span class="sub">ABC</span></div>
+                    <div class="digit" data-number="3">3<span class="sub">DEF</span></div>
+                </div>
+                <div class="row">
+                    <div class="digit" data-number="4">4<span class="sub">GHI</span></div>
+                    <div class="digit" data-number="5">5<span class="sub">JKL</span></div>
+                    <div class="digit" data-number="6">6<span class="sub">MNO</span></div>
+                </div>
+                <div class="row">
+                    <div class="digit" data-number="7">7<span class="sub">PQRS</span></div>
+                    <div class="digit" data-number="8">8<span class="sub">TUV</span></div>
+                    <div class="digit" data-number="9">9<span class="sub">WXYZ</span></div>
+                </div>
+                <div class="row">
+                    <div class="digit" data-number="*">*</div>
+                    <div class="digit" data-number="0">0<span class="sub">+</span></div>
+                    <div class="digit" data-number="#">#</div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="call-button" class="call-button">
+                    <i class="fa fa-phone"></i>
+                </button>
             </div>
         </div>
-        <div class="controls">
-            <button id="call-button" class="call-button">
-                <i class="fa fa-phone"></i>
-            </button>
+
+        <!-- Contacts Tab Content -->
+        <div id="contacts-tab" class="tab-content">
+            <div class="fancy-input">
+                <input type="text" class="output" id="game-output" placeholder="User In Game">
+                <i class="fa fa-search fancy-input-button"></i>
+            </div>
+            <div class="contact-list">
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">นิภา มะเหม็ง</div>
+                        <div class="contact-number">brotherba1982@gmailgmailgmail.com</div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- History Tab Content -->
+        <div id="history-tab" class="tab-content">
+            <div class="call-history">
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone incoming"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">John Doe</div>
+                        <div class="history-time">Today, 10:35 AM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone outgoing"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Jane Smith</div>
+                        <div class="history-time">Yesterday, 4:20 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone missed"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Unknown</div>
+                        <div class="history-time">Yesterday, 2:15 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone missed"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Unknown</div>
+                        <div class="history-time">Yesterday, 2:15 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone missed"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Unknown</div>
+                        <div class="history-time">Yesterday, 2:15 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone missed"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Unknown</div>
+                        <div class="history-time">Yesterday, 2:15 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone missed"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Unknown</div>
+                        <div class="history-time">Yesterday, 2:15 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+                <div class="history-item">
+                    <div class="call-type">
+                        <i class="fa fa-phone missed"></i>
+                    </div>
+                    <div class="history-details">
+                        <div class="history-name">Unknown</div>
+                        <div class="history-time">Yesterday, 2:15 PM</div>
+                    </div>
+                    <div class="call-action">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Toggle dialer visibility
+            $("#softphone_header").click(function () {
+                $("#dialer").toggle();
+                $("#softphone_arrow").css("transform",
+                    $("#dialer").is(":visible") ? "rotate(0deg)" : "rotate(180deg)");
+            });
+
+            // Digit click handler
+            $(".digit").click(function () {
+                const number = $(this).data("number");
+                $("#output").val($("#output").val() + number);
+            });
+
+            // Tab switching functionality
+            $(".tab").click(function () {
+                const tabId = $(this).data("tab");
+
+                // Update active tab
+                $(".tab").removeClass("active");
+                $(this).addClass("active");
+
+                // Move indicator
+                const index = $(this).index();
+                $(".tab-indicator").css("left", (index * 33.33) + "%");
+
+                // Show active content
+                $(".tab-content").removeClass("active");
+                $("#" + tabId).addClass("active");
+            });
+
+            // Contact click handler
+            $(".contact-item").click(function () {
+                const number = $(this).find(".contact-number").text();
+                $("#output").val(number);
+                $(".tab[data-tab='dialer-tab']").click();
+            });
+
+            // History call action
+            $(".call-action").click(function (e) {
+                e.stopPropagation();
+                const number = $(this).closest(".history-item").find(".history-name").text();
+                $("#output").val(number);
+                $(".tab[data-tab='dialer-tab']").click();
+            });
+        });
+    </script>
 </body>
 
 </html>
