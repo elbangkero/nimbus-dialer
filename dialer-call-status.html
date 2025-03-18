@@ -4,10 +4,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Dial Pad</title>
+    <title>Flyfone Dialer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .call-info h3 {
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid #61a8d8;
+            padding-bottom: 8px;
+        }
+
+        .info-item {
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            background: #ffffff;
+            border-radius: 8px;
+            width: 160px;
+            text-align: left;
+            border-left: 3px solid #61a8d8;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .info-label {
+            color: #7f8c8d;
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .call-duration {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #61a8d8;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(97, 168, 216, 0.1);
+            border-radius: 12px;
+        }
+
+        .call-status {
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 10px auto;
+            display: inline-block;
+            background-color: #2ecc71;
+            color: white;
+
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px; 
+            border-radius: 50px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            font-weight: 500; 
+            width: fit-content;
+            animation: pulse 2s infinite;
+        }
+
+        .call-controls {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+
+        .control-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-label {
+            margin-top: 5px;
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+
+        .pulse-animation {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulse-drop-button 2s infinite;
+        }
+
+
+        /* Pulse animation for the end call button */
+        @keyframes pulse-drop-button {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+            }
+        }
+ 
+    </style>
 </head>
 
 <body>
@@ -19,29 +148,51 @@
     </div>
     <div id="dialer" class="dialer-container">
         <div class="call-info">
-            <h3>Call Information</h3>
+            <h3>Active Call</h3>
+
+            <div class="call-status">
+                <i class="fas fa-phone"></i> Connected
+            </div>
+
             <div class="info-item">
-                <span>Player Name:</span> Robert John Gajelomo
+                <span class="info-label">Player Name</span>
+                <span class="info-value">Robert John Gajelomo</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">User In Game</span>
+                <span class="info-value">005018d5e7956f1b</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Call Duration</span>
+                <span class="info-value">10:01</span>
             </div>
             <div class="info-item">
-                <span>Player Username:</span> 005018d5e7956f1b
-            </div>
-            <div class="info-item">
-                <span>Call Duration:</span> 2:00
+                <span class="info-label">Start Time</span>
+                <span class="info-value">10:01</span>
             </div>
         </div>
+
         <div class="dial-pad">
-            <div class="row">
-                <button id="drop-call-button" class="drop-call-button">
-                    <i class="fa fa-phone-slash"></i>
-                </button>
-                <button id="mute-button" class="mute-button">
-                    <i class="fa fa-microphone"></i>
-                </button>
+            <div class="call-controls">
+                <div class="control-button">
+                    <button id="drop-call-button" class="drop-call-button pulse">
+                        <i class="fa fa-phone-slash"></i>
+                    </button>
+                    <span class="button-label">End Call</span>
+                </div>
+
+                <div class="control-button">
+                    <button id="mute-button" class="mute-button">
+                        <i class="fa fa-microphone"></i>
+                    </button>
+                    <span class="button-label">Mute</span>
+                </div> 
             </div>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 

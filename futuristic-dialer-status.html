@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Phone Dial Pad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .toggle-button {
+            width: 234px;
+            /* Full width same as dialer */
+            padding: 10px;
+            background-color: #61a8d8;
+            /* Blue */
+            color: white;
+            border: none;
+            border-radius: 0 10px 0 0;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            position: fixed;
+            /* Fix the button at the bottom left */
+            bottom: 0;
+            /* Distance from the bottom */
+            left: 0;
+            /* Distance from the left */
+            max-width: 400px;
+            /* Same max width as dialer */
+            box-shadow: 5px 1px 1px 1px #61a8d8;
+            z-index: 999;
+            /* Keep button on top */
+        }
+
+        .dialer-container {
+            position: fixed;
+            bottom: 23px;
+            /* Higher distance */
+            left: 10px;
+            width: 180px;
+            /* Smaller Dialer */
+            background-color: #090e19;
+            border-radius: 10px 10px 0 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #0cebeb;
+            /* Neon border */
+            box-shadow: 0 0 15px rgba(12, 235, 235, 0.5);
+        }
+
+        .call-info {
+            margin: 0 0 40px 0;
+            width: 100%;
+        }
+
+        .call-info h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #0cebeb;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(12, 235, 235, 0.7);
+        }
+
+        .info-item {
+            padding: 10px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            width: 100%;
+            text-align: left;
+            border-left: 3px solid #0cebeb;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(12, 235, 235, 0.1), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .info-label {
+            display: block;
+            color: #0cebeb;
+            font-size: 10px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            color: white;
+            font-size: 12px;
+        }
+
+        .dial-pad {
+            width: 100%;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .call-status {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px solid rgba(12, 235, 235, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .call-status-text {
+            color: #0cebeb;
+            font-size: 12px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .call-status::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: #0cebeb;
+            animation: progress 60s linear infinite;
+            box-shadow: 0 0 8px 1px #0cebeb;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .drop-call-button {
+            background: linear-gradient(145deg, #ff3a3a, #d62828);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 58, 58, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .drop-call-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 58, 58, 0.7);
+        }
+
+        .mute-button {
+            background: linear-gradient(145deg, #0cebeb, #20e3b2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(12, 235, 235, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .mute-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(12, 235, 235, 0.7);
+        }
+
+        .signal-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .signal-bar {
+            width: 5px;
+            margin: 0 2px;
+            background-color: rgba(12, 235, 235, 0.3);
+            border-radius: 2px;
+        }
+
+        .signal-bar:nth-child(1) {
+            height: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .signal-bar:nth-child(2) {
+            height: 15px;
+            animation: pulse 2s infinite 0.2s;
+        }
+
+        .signal-bar:nth-child(3) {
+            height: 20px;
+            animation: pulse 2s infinite 0.4s;
+        }
+
+        .signal-bar:nth-child(4) {
+            height: 25px;
+            animation: pulse 2s infinite 0.6s;
+        }
+
+        .signal-bar:nth-child(5) {
+            height: 30px;
+            animation: pulse 2s infinite 0.8s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { background-color: rgba(12, 235, 235, 0.3); }
+            50% { background-color: rgba(12, 235, 235, 1); }
+        }
+
+        .softphone_header {
+            cursor: pointer;
+            position: fixed;
+            left: 10px;
+            width: 220px;
+            z-index: 2147483646;
+            box-shadow: 0 0 25px rgba(12, 235, 235, 0.3);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            display: block;
+            background: linear-gradient(90deg, #090e19, #1e3c72);
+            color: white;
+            bottom: 0px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .softphone_comment {
+            background: transparent url(./comments.svg) repeat scroll 17px 17px / 17px 17px;
+            float: left;
+            display: block;
+            height: 17px;
+            width: 17px;
+            position: relative;
+            top: -3px;
+            margin: 4px 10px 0 -10px;
+            filter: drop-shadow(0 0 2px #0cebeb);
+        }
+
+        .softphone_arrow {
+            cursor: pointer;
+            font-size: 1.2em;
+            margin: 4px 15px 0 auto;
+            background: transparent url(./arrow-down.svg) repeat scroll 14px 14px / 14px 14px;
+            display: block;
+            float: right;
+            height: 14px;
+            width: 14px;
+            transform: rotate(180deg);
+            right: -8px;
+            position: absolute;
+            bottom: 6px;
+            top: 1px;
+            filter: drop-shadow(0 0 2px #0cebeb);
+        }
+
+        .toggle-dialer {
+            display: table;
+            padding: 2px 0 0 25px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="softphone_header" class="softphone_header">
+        <div id="toggle-dialer" class="toggle-dialer">
+            <i class="softphone_comment"></i><span>Flyfone</span>
+            <i id="softphone_arrow" class="softphone_arrow"></i>
+        </div>
+    </div>
+    <div id="dialer" class="dialer-container">
+        <div class="signal-indicator">
+            <div class="signal-bar"></div>
+            <div class="signal-bar"></div>
+            <div class="signal-bar"></div>
+            <div class="signal-bar"></div>
+            <div class="signal-bar"></div>
+        </div>
+        <div class="call-status">
+            <span class="call-status-text">SECURE LINE ACTIVE</span>
+        </div>
+        <div class="call-info">
+            <h3>Call Data</h3>
+            <div class="info-item">
+                <span class="info-label">USER ID</span>
+                <span class="info-value">Robert John Gajelomo</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">UNIQUE IDENTIFIER</span>
+                <span class="info-value">005018d5e7956f1b</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">CALL DURATION</span>
+                <span class="info-value" id="call-duration">02:00</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">CALL QUALITY</span>
+                <span class="info-value">98% - EXCELLENT</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">CONNECTION</span>
+                <span class="info-value">ENCRYPTED (AES-256)</span>
+            </div>
+        </div>
+        <div class="dial-pad">
+            <div class="row">
+                <button id="drop-call-button" class="drop-call-button">
+                    <i class="fa fa-phone-slash"></i>
+                </button>
+                <button id="mute-button" class="mute-button">
+                    <i class="fa fa-microphone"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            // Toggle the dialer visibility
+            $("#softphone_header").click(function() {
+                $("#dialer").toggle();
+                $("#softphone_arrow").toggleClass("rotated");
+            });
+            
+            // Timer functionality for call duration
+            let seconds = 0;
+            let minutes = 2;
+            const callDurationDisplay = document.getElementById('call-duration');
+            
+            setInterval(function() {
+                seconds++;
+                if (seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+                callDurationDisplay.textContent = 
+                    (minutes < 10 ? '0' : '') + minutes + ':' + 
+                    (seconds < 10 ? '0' : '') + seconds;
+            }, 1000);
+            
+            // Button functionality
+            $("#mute-button").click(function() {
+                $(this).toggleClass("muted");
+                if ($(this).hasClass("muted")) {
+                    $(this).find("i").removeClass("fa-microphone").addClass("fa-microphone-slash");
+                } else {
+                    $(this).find("i").removeClass("fa-microphone-slash").addClass("fa-microphone");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
